@@ -194,12 +194,20 @@ docker run -p 8000:8000 simple-mcp-server-http
 # Connect to the Streamable HTTP server and call the add tool
 python client.py http://127.0.0.1:8000/mcp add a=100 b=200
 ```
+#### MCP Inspector
+Configuration the connection: 
+* Transport Type: Streamable HTTP
+* URL: http://127.0.1:8000/mcp
 
 ![MCP Inspector - Streamable HTTP Mode Example](images/mcp_inspector_streamable_http.png)
 > Testing the `add` tool in Streamable HTTP mode using Docker. The server runs in an isolated environment with all dependencies included.
 
 ## Additional Resources
 
-- [MCP Documentation](https://github.com/modelcontextprotocol/mcp)
-- [MCP Inspector Documentation](https://github.com/modelcontextprotocol/inspector)
-
+- [Introduction - MCP](https://modelcontextprotocol.io/introduction)
+- [MCP Docs](https://docs.anthropic.com/en/docs/mcp)
+- [MCP Python-SDK](https://github.com/modelcontextprotocol/python-sdk)
+- [Docker MCP images](https://hub.docker.com/catalogs/mcp)
+- [MCP Inspector](https://github.com/modelcontextprotocol/inspector)
+- [List of MCP Servers](https://github.com/docker/mcp-servers)
+- [Awesome MCP Servers](https://mcpservers.org/)
