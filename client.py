@@ -1,17 +1,3 @@
-"""
-Usage examples
-==============
-
-# 1 — start a local server script (stdio) and call its 'add' tool
-python client.py ./math_server.py add a=5 b=3
-
-# 2 — connect to a remote SSE endpoint, list tools only
-python client.py https://demo.example.com/sse
-
-# 3 — connect to a remote Streamable HTTP endpoint and run 'search_web'
-python client.py https://demo.example.com/mcp search_web query="ray serve tutorial" top_k=5
-"""
-
 import asyncio, json, os, re, sys
 from contextlib import AsyncExitStack
 from typing import Optional, Tuple, Dict, Any
