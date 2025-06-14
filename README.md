@@ -76,6 +76,11 @@ The stdio server should not be run directly as it requires a client connection d
 # The client will automatically start the server as a subprocess
 uv run python client.py ./server_stdio.py add a=5 b=3
 ```
+#### MCP Inspector
+Configuration the connection: 
+* Transport Type: STDIO
+* Command: uv
+* Arguments: run python server_stdio.py
 
 ![MCP Inspector - Stdio Mode Example](images/mcp_inspector_stdio.png)
 > Testing the `add` tool in stdio mode. The client automatically starts the server as a subprocess.
@@ -93,6 +98,10 @@ uv run python server_sse.py
 # Connect to the SSE server and call the add tool
 uv run python client.py http://127.0.0.1:8000/sse add a=10 b=20
 ```
+#### MCP Inspector
+Configuration the connection: 
+* Transport Type: SSE
+* URL: http://127.0.1:8000/sse
 
 ![MCP Inspector - SSE Mode Example](images/mcp_inspector_sse.png)
 > Testing the `add` tool in SSE mode. The server runs independently and communicates via Server-Sent Events.
@@ -110,6 +119,10 @@ uv run python server_streamable_http.py
 # Connect to the Streamable HTTP server and call the add tool
 uv run python client.py http://127.0.0.1:8000/mcp add a=100 b=200
 ```
+#### MCP Inspector
+Configuration the connection: 
+* Transport Type: Streamable HTTP
+* URL: http://127.0.1:8000/mcp
 
 ![MCP Inspector - Streamable HTTP Mode Example](images/mcp_inspector_streamable_http.png)
 > Testing the `add` tool in Streamable HTTP mode. The server uses a single endpoint for both commands and responses.
@@ -125,6 +138,13 @@ docker build -t simple-mcp-server-stdio -f Dockerfile.stdio .
 ```
 
 #### Client
+You cannot test the client directly since the server is in the Docker container and is not set up by the client in this script. However, you can implement your own code to set up Docker as a process and connect the client with it.
+
+#### MCP Inspector
+Configuration the connection: 
+* Transport Type: STDIO
+* Command: docker
+* Arguments: run -i --rm simple-mcp-server-stdio
 
 ![MCP Inspector - Stdio Mode Example](images/docker_mcp_inspector_stdio.png)
 > Testing the `add` tool in stdio mode using Docker. Note that stdio mode is primarily designed for local use.
@@ -148,7 +168,10 @@ docker run -p 8000:8000 simple-mcp-server-sse
 # Connect to the SSE server and call the add tool
 python client.py http://127.0.0.1:8000/sse add a=10 b=20
 ```
-
+#### MCP Inspector
+Configuration the connection: 
+* Transport Type: SSE
+* URL: http://127.0.1:8000/sse
 ![MCP Inspector - SSE Mode Example](images/mcp_inspector_sse.png)
 > Testing the `add` tool in SSE mode using Docker. The server runs in an isolated environment with all dependencies included.
 
@@ -179,3 +202,4 @@ python client.py http://127.0.0.1:8000/mcp add a=100 b=200
 
 - [MCP Documentation](https://github.com/modelcontextprotocol/mcp)
 - [MCP Inspector Documentation](https://github.com/modelcontextprotocol/inspector)
+
