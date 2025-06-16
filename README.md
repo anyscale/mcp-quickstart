@@ -174,7 +174,7 @@ docker run -p 8000:8000 simple-mcp-server-sse
 # List all the tools
 uv run python client.py http://127.0.0.1:8000/sse 
 # Connect to the SSE server and call the add tool
-python client.py http://127.0.0.1:8000/sse add a=10 b=20
+uv run python client.py http://127.0.0.1:8000/sse add a=10 b=20
 ```
 #### MCP Inspector
 Configuration the connection: 
@@ -202,7 +202,7 @@ docker run -p 8000:8000 simple-mcp-server-http
 # List all the tools
 uv run python client.py http://127.0.0.1:8000/mcp 
 # Connect to the Streamable HTTP server and call the add tool
-python client.py http://127.0.0.1:8000/mcp add a=100 b=200
+uv run python client.py http://127.0.0.1:8000/mcp add a=100 b=200
 ```
 #### MCP Inspector
 Configuration the connection: 
