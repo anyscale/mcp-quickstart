@@ -64,9 +64,9 @@ MCP supports three different transport modes, each with its own characteristics 
   - Enables stateless server designs
   - Better scalability and reliability
 
-## 4. Running MCP Servers and Clients with Python Script
+## 4. Running MCP Server and Client with Python Script
 
-### 1. Stdio Mode
+### Stdio Mode
 
 #### Server
 The stdio server should not be run directly as it requires a client connection due to its one-to-one coupling nature.
@@ -87,7 +87,7 @@ Configuration the connection:
 ![MCP Inspector - Stdio Mode Example](images/mcp_inspector_stdio.png)
 > Testing the `add` tool in stdio mode. The client automatically starts the server as a subprocess.
 
-### 2. SSE Mode
+### SSE Mode
 
 #### Server
 ```bash
@@ -110,7 +110,7 @@ Configuration the connection:
 ![MCP Inspector - SSE Mode Example](images/mcp_inspector_sse.png)
 > Testing the `add` tool in SSE mode. The server runs independently and communicates via Server-Sent Events.
 
-### 3. Streamable HTTP Mode
+### Streamable HTTP Mode
 
 #### Server
 ```bash
@@ -133,9 +133,9 @@ Configuration the connection:
 ![MCP Inspector - Streamable HTTP Mode Example](images/mcp_inspector_streamable_http.png)
 > Testing the `add` tool in Streamable HTTP mode. The server uses a single endpoint for both commands and responses.
 
-## 5. Running MCP Servers and Clients with Docker Image
+## 5. Running MCP Server and Client with Docker Image
 
-### 1. Stdio Mode
+### Stdio Mode
 
 #### Build Docker Image
 ```bash
@@ -155,7 +155,7 @@ Configuration the connection:
 ![MCP Inspector - Stdio Mode Example](images/docker_mcp_inspector_stdio.png)
 > Testing the `add` tool in stdio mode using Docker. Note that stdio mode is primarily designed for local use.
 
-### 2. SSE Mode
+### SSE Mode
 
 #### Build Docker Image
 ```bash
@@ -183,7 +183,7 @@ Configuration the connection:
 ![MCP Inspector - SSE Mode Example](images/mcp_inspector_sse.png)
 > Testing the `add` tool in SSE mode using Docker. The server runs in an isolated environment with all dependencies included.
 
-### 3. Streamable HTTP Mode
+### Streamable HTTP Mode
 
 #### Build Docker Image
 ```bash
