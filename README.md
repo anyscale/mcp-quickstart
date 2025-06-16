@@ -38,14 +38,14 @@ npx -y @modelcontextprotocol/inspector@0.14.0
 
 MCP supports three different transport modes, each with its own characteristics and use cases:
 
-### STDIO (Local Only)
+### 3.1 STDIO (Local Only)
 - **Definition**: Uses standard input/output streams (stdin, stdout, stderr)
 - **Key Features**:
   - One-to-one coupling: Each client directly owns its server subprocess
   - Auto-cleanup: Server process terminates automatically when client exits
   - Optimal for local use: Ideal for desktop applications like Claude Desktop App, Cursor, etc.
 
-### SSE (Legacy, Deprecated)
+### 3.2 SSE (Legacy, Deprecated)
 - **Definition**: Uses Server-Sent Events with two endpoints:
   - POST /messages (commands)
   - GET /sse (streamed replies)
@@ -54,7 +54,7 @@ MCP supports three different transport modes, each with its own characteristics 
   - Hard to scale beyond 2 replicas without sticky session management
   - Being phased out in favor of Streamable HTTP
 
-### Streamable HTTP (Recommended)
+### 3.3 Streamable HTTP (Recommended)
 - **Definition**: Uses a single endpoint `/mcp` supporting both GET and POST methods
 - **Advantages**:
   - Built-in session handling
@@ -66,7 +66,7 @@ MCP supports three different transport modes, each with its own characteristics 
 
 ## 4. Running MCP Server and Client with Python Script
 
-### Stdio Mode
+### 4.1 Stdio Mode
 
 #### Server
 The stdio server should not be run directly as it requires a client connection due to its one-to-one coupling nature.
@@ -87,7 +87,7 @@ Configuration the connection:
 ![MCP Inspector - Stdio Mode Example](images/mcp_inspector_stdio.png)
 > Testing the `add` tool in stdio mode. The client automatically starts the server as a subprocess.
 
-### SSE Mode
+### 4.2 SSE Mode
 
 #### Server
 ```bash
@@ -110,7 +110,7 @@ Configuration the connection:
 ![MCP Inspector - SSE Mode Example](images/mcp_inspector_sse.png)
 > Testing the `add` tool in SSE mode. The server runs independently and communicates via Server-Sent Events.
 
-### Streamable HTTP Mode
+### 4.3 Streamable HTTP Mode
 
 #### Server
 ```bash
@@ -135,7 +135,7 @@ Configuration the connection:
 
 ## 5. Running MCP Server and Client with Docker Image
 
-### Stdio Mode
+### 5.1 Stdio Mode
 
 #### Build Docker Image
 ```bash
@@ -155,7 +155,7 @@ Configuration the connection:
 ![MCP Inspector - Stdio Mode Example](images/docker_mcp_inspector_stdio.png)
 > Testing the `add` tool in stdio mode using Docker. Note that stdio mode is primarily designed for local use.
 
-### SSE Mode
+### 5.2 SSE Mode
 
 #### Build Docker Image
 ```bash
@@ -183,7 +183,7 @@ Configuration the connection:
 ![MCP Inspector - SSE Mode Example](images/mcp_inspector_sse.png)
 > Testing the `add` tool in SSE mode using Docker. The server runs in an isolated environment with all dependencies included.
 
-### Streamable HTTP Mode
+### 5.3 Streamable HTTP Mode
 
 #### Build Docker Image
 ```bash
@@ -212,7 +212,49 @@ Configuration the connection:
 ![MCP Inspector - Streamable HTTP Mode Example](images/mcp_inspector_streamable_http.png)
 > Testing the `add` tool in Streamable HTTP mode using Docker. The server runs in an isolated environment with all dependencies included.
 
-## Additional Resources
+
+## 6. Using MCP with Claude Desktop App
+
+### 6.1 Running with UV Package Manager
+The repository includes a weather service example in `weather_mcp.py`. 
+
+- Follow the official guide at [Testing Your Server with Claude Desktop](https://modelcontextprotocol.io/quickstart/server#testing-your-server-with-claude-for-desktop)
+
+- Use the provided `weather_mcp.py` script as your MCP server
+
+### 6.2 Running with Docker
+- Build the Docker image:
+```bash
+docker build -t weather-mcp-server-stdio -f Dockerfile.weather.stdio .
+```
+
+- Configure Claude Desktop App:
+   - Open Claude Desktop App settings
+   - Add the following MCP configuration:
+```json
+{
+  "mcpServers": {
+    "weather": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "weather-mcp-server-stdio"
+      ]
+    }
+  }
+}
+```
+
+- Verify the setup:
+   - The weather tool should appear in Claude Desktop App
+   - You can test it by asking Claude about the weather as shown below: 
+![Claude Desktop - Weather MCP Integration](images/claude_weather_mcp_docker.png)
+
+
+
+## 7. Additional Resources
 
 - [Introduction - MCP](https://modelcontextprotocol.io/introduction)
 - [MCP Docs](https://docs.anthropic.com/en/docs/mcp)
@@ -221,3 +263,4 @@ Configuration the connection:
 - [MCP Inspector](https://github.com/modelcontextprotocol/inspector)
 - [List of MCP Servers](https://github.com/docker/mcp-servers)
 - [Awesome MCP Servers](https://mcpservers.org/)
+- [Integrate MCP for Claude Desktop](https://modelcontextprotocol.io/quickstart/user)
