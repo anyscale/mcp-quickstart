@@ -73,6 +73,8 @@ The stdio server should not be run directly as it requires a client connection d
 
 #### Client
 ```bash
+# List all the tools
+uv run python client.py ./server_stdio.py
 # The client will automatically start the server as a subprocess
 uv run python client.py ./server_stdio.py add a=5 b=3
 ```
@@ -95,6 +97,8 @@ uv run python server_sse.py
 
 #### Client
 ```bash
+# List all the tools
+uv run python client.py http://127.0.0.1:8000/sse 
 # Connect to the SSE server and call the add tool
 uv run python client.py http://127.0.0.1:8000/sse add a=10 b=20
 ```
@@ -116,6 +120,8 @@ uv run python server_streamable_http.py
 
 #### Client
 ```bash
+# List all the tools
+uv run python client.py http://127.0.0.1:8000/mcp 
 # Connect to the Streamable HTTP server and call the add tool
 uv run python client.py http://127.0.0.1:8000/mcp add a=100 b=200
 ```
@@ -165,6 +171,8 @@ docker run -p 8000:8000 simple-mcp-server-sse
 
 #### Client
 ```bash
+# List all the tools
+uv run python client.py http://127.0.0.1:8000/sse 
 # Connect to the SSE server and call the add tool
 python client.py http://127.0.0.1:8000/sse add a=10 b=20
 ```
@@ -191,6 +199,8 @@ docker run -p 8000:8000 simple-mcp-server-http
 
 #### Client
 ```bash
+# List all the tools
+uv run python client.py http://127.0.0.1:8000/mcp 
 # Connect to the Streamable HTTP server and call the add tool
 python client.py http://127.0.0.1:8000/mcp add a=100 b=200
 ```
