@@ -275,7 +275,6 @@ You can use the same configuration as for Claude Desktop. Once configured, you c
 
 ![Weather MCP integration in Cursor App](images/cursor_weather_mcp_demo.png)
 
-
 ## 8. Additional Resources
 
 - [Introduction - MCP](https://modelcontextprotocol.io/introduction)
