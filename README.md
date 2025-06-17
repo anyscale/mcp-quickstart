@@ -220,7 +220,22 @@ The repository includes a weather service example in `weather_mcp.py`.
 
 - Follow the official guide at [Testing Your Server with Claude Desktop](https://modelcontextprotocol.io/quickstart/server#testing-your-server-with-claude-for-desktop)
 
-- Use the provided `weather_mcp.py` script as your MCP server
+- Use the provided `weather_mcp.py` script as your MCP server and make sure the MCP Configuration is:
+```json
+{
+  "mcpServers": {
+    "weather": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/ABSOLUTE/PATH/TO/PARENT/FOLDER/",
+        "run",
+        "weather_mcp.py"
+      ]
+    }
+  }
+}
+```
 
 ### 6.2 Running with Docker
 - Build the Docker image:
@@ -250,11 +265,18 @@ docker build -t weather-mcp-server-stdio -f Dockerfile.weather.stdio .
 - Verify the setup:
    - The weather tool should appear in Claude Desktop App
    - You can test it by asking Claude about the weather as shown below: 
-![Claude Desktop - Weather MCP Integration](images/claude_weather_mcp_docker.png)
+![Claude Desktop - Weather MCP Integration](images/claude_weather_mcp_demo.png)
 
 
+## 7. Using MCP with the Cursor App
+To use MCP with the Cursor App, follow the [Cursor integration guide for MCP](https://docs.cursor.com/context/model-context-protocol).
 
-## 7. Additional Resources
+You can use the same configuration as for Claude Desktop. Once configured, you can call the weather MCP and receive responses directly in Cursor, as shown below:
+
+![Weather MCP integration in Cursor App](images/cursor_weather_mcp_demo.png)
+
+
+## 8. Additional Resources
 
 - [Introduction - MCP](https://modelcontextprotocol.io/introduction)
 - [MCP Docs](https://docs.anthropic.com/en/docs/mcp)
