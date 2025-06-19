@@ -61,7 +61,7 @@ class MCPClient:
         if not self.session:
             raise RuntimeError("Session not initialised")
         print(f"\nCalling tool “{name}” with params {params} …")
-        result = await self.session.call_tool(name, params)  # ← core SDK API :contentReference[oaicite:0]{index=0}
+        result = await self.session.call_tool(name, params)  
         # Handle the common result fields gracefully
         if hasattr(result, "content") and result.content:
             print("Result:", result.content[0].text)

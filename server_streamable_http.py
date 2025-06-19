@@ -2,7 +2,7 @@ from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP(
     name="CalculatorServer",
-    host="0.0.0.0",        
+    host="0.0.0.0", # allow Docker port binding       
     port=8000
 )
 

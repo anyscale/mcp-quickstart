@@ -1,6 +1,6 @@
 # MCP Quickstart Tutorial
 
-This tutorial demonstrates how to use the Model Context Protocol (MCP) with different transport modes: stdio, SSE, and Streamable HTTP. The example MCP server implements a simple calculator with an `add` tool that adds two integers. The tutorial covers both running the server using Python scripts and deploying it using Docker containers.
+This tutorial demonstrates how to use the Model Context Protocol (MCP) with different transport modes: stdio, SSE, and Streamable HTTP. The example MCP server implements a simple calculator with an `add` tool that adds two integers. The tutorial covers both running the server using Python scripts and deploying it using Docker containers, as well as integration with Claude Desktop and Cursor Coding Editor. 
 
 ## Prerequisites
 
